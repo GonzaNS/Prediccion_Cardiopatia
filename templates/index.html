@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Predicción de Cardiopatía</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="number"] {
+            padding: 5px;
+            width: 300px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 15px;
+            background-color: #3498db;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        .resultado {
+            margin-top: 30px;
+            background-color: #e8f4fd;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            white-space: pre-line; /* Esto permite que se respeten los \n */
+        }
+
+        /* Estilo para tooltips */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+            background-color: #ccc;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .tooltiptext {
+            visibility: hidden;
+            width: 220px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h2>Formulario de Evaluación de Riesgo Cardiaco</h2>
+
+    <form action="/predict" method="POST">
+        <label>Edad: <input type="number" name="Edad" required></label>
+        <label>Sexo: <input type="number" name="Sexo" required></label>
+        <label>Tipo de Dolor de Pecho: <input type="number" name="Tipo_Dolor_Pecho" required></label>
+        <label>Presión Arterial: <input type="number" name="Presion_Arterial" required></label>
+        <label>Colesterol: <input type="number" name="Colesterol" required></label>
+        <label>Nivel Azúcar Ayunas: <input type="number" name="Nivel_Azucar_Ayunas" required></label>
+        <label>Resultado Electrocardiográfico: <input type="number" name="Res_Electrocardiografico" required></label>
+        <label>Frecuencia Cardíaca Máxima: <input type="number" name="Frecuencia_Cardiaca" required></label>
+        <label>Angina Inducida por Ejercicio: <input type="number" name="Angina_Inducida" required></label>
+        <label>Depresión ST: <input type="text" name="DepresionST" required></label>
+        <label>Pendiente Segmento ST: <input type="number" name="DepresionST_Pendiente" required></label>
+        <label>Número de Vasos Principales: <input type="number" name="NumeroVasos" required></label>
+        <label>
+            Resultado Prueba Talio:
+            <span class="tooltip">?
+                <span class="tooltiptext">0 = normal, 1 = defecto fijo, 2 = defecto reversible</span>
+            </span>
+            <input type="number" name="Prueba_Tálio" required>
+        </label>
+
+        <input type="submit" value="Predecir">
+    </form>
+
+    {% if prediction_text %}
+    <div class="resultado">
+        <h3>Resultado de la Predicción:</h3>
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+</body>
+</html>
