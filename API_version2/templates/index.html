@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Predicción de Cardiopatía</title>
+</head>
+
+<body>
+
+    <h1>Formulario de Predicción de Cardiopatía</h1>
+
+    <form method="POST" action="/predict">
+        <label for="Edad">Edad:</label>
+        <input type="number" id="Edad" name="Edad" required><br><br>
+
+        <label for="Sexo">Sexo (1=Masculino, 0=Femenino):</label>
+        <input type="number" id="Sexo" name="Sexo" required><br><br>
+
+        <label for="Tipo_Dolor_Pecho">Tipo de Dolor de Pecho (0=ninguno, 1=leve, 2=intenso):</label>
+        <input type="number" id="Tipo_Dolor_Pecho" name="Tipo_Dolor_Pecho" required><br><br>
+
+        <label for="Presion_Arterial">Presión Arterial:</label>
+        <input type="number" id="Presion_Arterial" name="Presion_Arterial" required><br><br>
+
+        <label for="Colesterol">Colesterol:</label>
+        <input type="number" id="Colesterol" name="Colesterol" required><br><br>
+
+        <label for="Nivel_Azucar_Ayunas">Nivel de Azúcar en Ayunas (0 o 1):</label>
+        <input type="number" id="Nivel_Azucar_Ayunas" name="Nivel_Azucar_Ayunas" required><br><br>
+
+        <label for="Res_Electrocardiografico">Resultado del Electrocardiograma (0=normal, 1=anormal):</label>
+        <input type="number" id="Res_Electrocardiografico" name="Res_Electrocardiografico" required><br><br>
+
+        <label for="Frecuencia_Cardiaca">Frecuencia Cardiaca:</label>
+        <input type="number" id="Frecuencia_Cardiaca" name="Frecuencia_Cardiaca" required><br><br>
+
+        <label for="Angina_Inducida">Angina Inducida (1=Sí, 0=No):</label>
+        <input type="number" id="Angina_Inducida" name="Angina_Inducida" required><br><br>
+
+        <label for="DepresionST">Depresión ST:</label>
+        <input type="number" id="DepresionST" name="DepresionST" required><br><br>
+
+        <label for="DepresionST_Pendiente">Depresión ST Pendiente:</label>
+        <input type="number" id="DepresionST_Pendiente" name="DepresionST_Pendiente" required><br><br>
+
+        <label for="NumeroVasos">Número de Vasos:</label>
+        <input type="number" id="NumeroVasos" name="NumeroVasos" required><br><br>
+
+        <label for="Prueba_Tálio">Prueba de Talio:</label>
+        <input type="number" id="Prueba_Tálio" name="Prueba_Tálio" required><br><br>
+
+        <button type="submit">Predecir</button>
+    </form>
+
+    {% if prediccion is not none %}
+    <h2>Resultado de la Predicción:</h2>
+    <p><strong>Predicción:</strong> {{ prediccion }} {% if prediccion == 1 %}(Positivo){% else %}(Negativo){% endif %}
+    </p>
+    <p><strong>Probabilidad de tener cardiopatía:</strong> {{ '%.2f'|format(probabilidad * 100) }}%</p>
+    {% endif %}
+
+
+</body>
+
+</html>
