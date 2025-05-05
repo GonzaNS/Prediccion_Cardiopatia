@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('https://www.untels.edu.pe/FTP/2021.05.21.0038_DISE%C3%91O%20PMESUT_WEB.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+/* Capa oscura translúcida encima del fondo */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Oscurece el fondo */
+    z-index: -1;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+}
+
+form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    /* Fondo blanco casi opaco */
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.resultado {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.input-container {
+    margin-bottom: 15px;
+}
+
+.input-with-tooltip {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-with-tooltip input {
+    padding-right: 30px;
+    /* espacio para el círculo */
+    width: 500px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.tooltip-circle {
+    position: absolute;
+    right: 8px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 18px;
+    cursor: pointer;
+}
+
+.tooltip-circle .tooltiptext {
+    visibility: hidden;
+    width: 180px;
+    background-color: #333;
+    color: #fff;
+    text-align: left;
+    padding: 6px;
+    border-radius: 6px;
+    position: absolute;
+    top: -5px;
+    left: 110%;
+    z-index: 1;
+    font-size: 13px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-circle:hover .tooltiptext,
+.tooltip-circle:focus .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.resultado-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.resultado-container h2 {
+    color: #f8f9fa;
+}
+
+.resultado-container p {
+    font-size: 18px;
+    color: #e0e0e0;
+}
+
+.resultado-container .positivo {
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+.resultado-container .negativo {
+    color: #00cc66;
+    font-weight: bold;
+}

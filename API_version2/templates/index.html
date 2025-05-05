@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>Formulario de Predicción de Cardiopatía</title>
+
+
 </head>
 
 <body>
@@ -12,8 +15,163 @@
     <h1>Formulario de Predicción de Cardiopatía</h1>
 
     <form method="POST" action="/predict">
-        <label for="Edad">Edad:</label>
+
+        <div class="input-container">
+            <label for="Edad">Edad</label>
+            <div class="input-with-tooltip">
+                <input type="number" id="Edad" name="Edad" required><br><br>
+                <div class="tooltip-circle" tabindex="0">?
+                    <span class="tooltiptext">Edad en años. Ejemplo: 45</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sexo -->
+        <div class="input-container">
+            <label for="Sexo">Sexo</label>
+            <div class="input-with-tooltip">
+                <input type="number" id="Sexo" name="Sexo" required>
+                <div class="tooltip-circle">?
+                    <span class="tooltiptext">0 = Mujer, 1 = Hombre</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tipo de Dolor de Pecho -->
+        <div class="input-container">
+            <label for="Tipo_Dolor_Pecho">Tipo Dolor Pecho</label>
+            <div class="input-with-tooltip">
+                <input type="number" id="Tipo_Dolor_Pecho" name="Tipo_Dolor_Pecho" required>
+                <div class="tooltip-circle">?
+                    <span class="tooltiptext">0 a 3. Dolor típico, atípico, no anginal, asintomático</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Presión Arterial -->
+        <div class="input-container">
+            <label for="Presion_Arterial">Presión Arterial</label>
+            <div class="input-with-tooltip">
+                <input type="number" id="Presion_Arterial" name="Presion_Arterial" required>
+                <div class="tooltip-circle">?
+                    <span class="tooltiptext">Presión en reposo (mm Hg). Ej: 130</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Colesterol -->
+        <div class="input-container">
+            <label for="Colesterol">Colesterol</label>
+            <div class="input-with-tooltip">
+                <input type="number" id="Colesterol" name="Colesterol" required>
+                <div class="tooltip-circle">?
+                    <span class="tooltiptext">Nivel sérico (mg/dl). Ej: 250</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nivel de Azúcar en Ayunas -->
+        <div class="input-container">
+            <label for="Nivel_Azucar_Ayunas">Azúcar en Ayunas</label>
+            <div class="input-with-tooltip">
+                <input type="number" id="Nivel_Azucar_Ayunas" name="Nivel_Azucar_Ayunas" required>
+                <div class="tooltip-circle">?
+                    <span class="tooltiptext">1 si > 120 mg/dl, 0 si no</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resultado Electrocardiograma -->
+        <div class="input-container">
+            <label for="Res_Electrocardiografico">Electrocardiograma</label>
+            <div class="input-with-tooltip">
+                <input type="number" id="Res_Electrocardiografico" name="Res_Electrocardiografico" required>
+                <div class="tooltip-circle">?
+                    <span class="tooltiptext">0 a 2: Normal, anormalidad, hipertrofia</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frecuencia Cardíaca -->
+        <div class="input-container">
+            <label for="Frecuencia_Cardiaca">Frecuencia Cardíaca</label>
+            <div class="input-with-tooltip">
+                <input type="number" id="Frecuencia_Cardiaca" name="Frecuencia_Cardiaca" required>
+                <div class="tooltip-circle">?
+                    <span class="tooltiptext">Máxima alcanzada. Ej: 160</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Angina Inducida -->
+        <div class="input-container">
+            <label for="Angina_Inducida">Angina Inducida</label>
+            <div class="input-with-tooltip">
+                <input type="number" id="Angina_Inducida" name="Angina_Inducida" required>
+                <div class="tooltip-circle">?
+                    <span class="tooltiptext">1 = Sí, 0 = No</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Depresión ST -->
+        <div class="input-container">
+            <label for="DepresionST">Depresión ST</label>
+            <div class="input-with-tooltip">
+                <input type="number" step="0.1" id="DepresionST" name="DepresionST" required>
+                <div class="tooltip-circle">?
+                    <span class="tooltiptext">Depresión del segmento ST con ejercicio</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pendiente ST -->
+        <div class="input-container">
+            <label for="DepresionST_Pendiente">Pendiente ST</label>
+            <div class="input-with-tooltip">
+                <input type="number" id="DepresionST_Pendiente" name="DepresionST_Pendiente" required>
+                <div class="tooltip-circle">?
+                    <span class="tooltiptext">0 = descendente, 1 = plana, 2 = ascendente</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Número de Vasos -->
+        <div class="input-container">
+            <label for="NumeroVasos">Número de Vasos</label>
+            <div class="input-with-tooltip">
+                <input type="number" id="NumeroVasos" name="NumeroVasos" required>
+                <div class="tooltip-circle">?
+                    <span class="tooltiptext">Vasos coloreados por fluorosopía (0 a 3)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prueba Tálio -->
+        <div class="input-container">
+            <label for="Prueba_Tálio">Prueba Tálio</label>
+            <div class="input-with-tooltip">
+                <input type="number" id="Prueba_Tálio" name="Prueba_Tálio" required>
+                <div class="tooltip-circle">?
+                    <span class="tooltiptext">0 = normal, 1 = defecto fijo, 2 = defecto reversible</span>
+                </div>
+            </div>
+        </div>
+
+        <button type="submit">Predecir</button>
+
+        <!--<label for="Edad">Edad:</label>
+
+
+        <label for="Edad">Edad
+            <span class="tooltip">?
+                <span class="tooltiptext">Edad en años. Ejemplo: 45</span>
+            </span>
+        </label>
         <input type="number" id="Edad" name="Edad" required><br><br>
+
+        
+
 
         <label for="Sexo">Sexo (1=Masculino, 0=Femenino):</label>
         <input type="number" id="Sexo" name="Sexo" required><br><br>
@@ -51,14 +209,24 @@
         <label for="Prueba_Tálio">Prueba de Talio:</label>
         <input type="number" id="Prueba_Tálio" name="Prueba_Tálio" required><br><br>
 
-        <button type="submit">Predecir</button>
+        <button type="submit">Predecir</button>-->
     </form>
 
     {% if prediccion is not none %}
-    <h2>Resultado de la Predicción:</h2>
-    <p><strong>Predicción:</strong> {{ prediccion }} {% if prediccion == 1 %}(Positivo){% else %}(Negativo){% endif %}
-    </p>
-    <p><strong>Probabilidad de tener cardiopatía:</strong> {{ '%.2f'|format(probabilidad * 100) }}%</p>
+    <div class="resultado-container">
+        <h2>Resultado de la Predicción:</h2>
+        <p><strong>Predicción:</strong>
+            {{ prediccion }}
+            {% if prediccion == 1 %}
+            <span class="positivo">(Positivo)</span>
+            {% else %}
+            <span class="negativo">(Negativo)</span>
+            {% endif %}
+        </p>
+        <p><strong>Probabilidad de tener cardiopatía:</strong>
+            {{ '%.2f'|format(probabilidad * 100) }}%
+        </p>
+    </div>
     {% endif %}
 
 
